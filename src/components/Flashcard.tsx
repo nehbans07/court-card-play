@@ -60,21 +60,21 @@ const Flashcard = ({
         <div
           className={`absolute inset-0 backface-hidden rotate-y-180 rounded-xl ${colorClass} p-4 flex flex-col shadow-xl border-2 ${borderColorClass} overflow-hidden`}
         >
-          <div className="flex-1 flex flex-col text-white text-left space-y-1.5">
+          <div className="flex-1 flex flex-col text-white text-left space-y-2">
             <div>
-              <h4 className="font-display text-xs font-bold text-white/90 mb-0.5">
+              <h4 className="font-display text-sm font-bold text-white/90 mb-0.5">
                 Who you are:
               </h4>
-              <p className="text-xs leading-snug text-white/95">{whoYouAre}</p>
+              <p className="text-sm leading-snug text-white/95">{whoYouAre}</p>
             </div>
 
             <div>
-              <h4 className="font-display text-xs font-bold text-white/90 mb-0.5">
+              <h4 className="font-display text-sm font-bold text-white/90 mb-0.5">
                 Your job:
               </h4>
               <ul className="space-y-0.5">
                 {jobItems.map((job, index) => (
-                  <li key={index} className="text-xs text-white/95 flex items-start gap-1">
+                  <li key={index} className="text-sm text-white/95 flex items-start gap-1">
                     <span className="text-primary shrink-0">•</span>
                     <span className="leading-tight">{job}</span>
                   </li>
@@ -83,14 +83,14 @@ const Flashcard = ({
             </div>
 
             <div>
-              <h4 className="font-display text-xs font-bold text-white/90 mb-0.5">
+              <h4 className="font-display text-sm font-bold text-white/90 mb-0.5">
                 Say things like:
               </h4>
               <ul className="space-y-0.5">
-                {keyPhrases.map((phrase, index) => (
+                {keyPhrases.slice(0, 3).map((phrase, index) => (
                   <li
                     key={index}
-                    className="text-xs text-white/95 flex items-start gap-1"
+                    className="text-sm text-white/95 flex items-start gap-1"
                   >
                     <span className="text-primary shrink-0">→</span>
                     <span className="italic leading-tight">"{phrase}"</span>
@@ -100,7 +100,7 @@ const Flashcard = ({
             </div>
 
             <div className="pt-1 border-t border-white/20">
-              <p className="text-xs text-white/80">
+              <p className="text-sm text-white/80">
                 <span className="font-bold">Remember:</span> {remember}
               </p>
             </div>
