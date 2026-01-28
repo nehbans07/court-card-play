@@ -57,6 +57,24 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        role: {
+          judge: "hsl(var(--role-judge))",
+          "judge-light": "hsl(var(--role-judge-light))",
+          accused: "hsl(var(--role-accused))",
+          "accused-light": "hsl(var(--role-accused-light))",
+          prosecutor: "hsl(var(--role-prosecutor))",
+          "prosecutor-light": "hsl(var(--role-prosecutor-light))",
+          defense: "hsl(var(--role-defense))",
+          "defense-light": "hsl(var(--role-defense-light))",
+          witness: "hsl(var(--role-witness))",
+          "witness-light": "hsl(var(--role-witness-light))",
+          public: "hsl(var(--role-public))",
+          "public-light": "hsl(var(--role-public-light))",
+        },
+      },
+      fontFamily: {
+        display: ['Playfair Display', 'serif'],
+        body: ['Crimson Text', 'serif'],
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -65,25 +83,22 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        "gavel-bounce": {
+          "0%, 100%": { transform: "rotate(-5deg)" },
+          "50%": { transform: "rotate(5deg)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "gavel": "gavel-bounce 0.5s ease-in-out",
       },
     },
   },
