@@ -6,7 +6,7 @@ interface FlashcardProps {
   emoji: string;
   subtitle: string;
   whoYouAre: string;
-  yourJob: string[];
+  yourJob: string | string[];
   keyPhrases: string[];
   remember: string;
   colorClass: string;
@@ -25,6 +25,9 @@ const Flashcard = ({
   borderColorClass,
 }: FlashcardProps) => {
   const [isFlipped, setIsFlipped] = useState(false);
+
+  // Handle yourJob as either string or array
+  const jobItems = Array.isArray(yourJob) ? yourJob : [yourJob];
 
   return (
     <div
@@ -70,7 +73,7 @@ const Flashcard = ({
                 Your job:
               </h4>
               <ul className="space-y-0.5">
-                {yourJob.map((job, index) => (
+                {jobItems.map((job, index) => (
                   <li key={index} className="text-xs text-white/95 flex items-start gap-1">
                     <span className="text-primary shrink-0">•</span>
                     <span className="leading-tight">{job}</span>
