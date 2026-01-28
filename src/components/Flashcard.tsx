@@ -6,7 +6,7 @@ interface FlashcardProps {
   emoji: string;
   subtitle: string;
   whoYouAre: string;
-  yourJob: string;
+  yourJob: string[];
   keyPhrases: string[];
   remember: string;
   colorClass: string;
@@ -57,7 +57,7 @@ const Flashcard = ({
         <div
           className={`absolute inset-0 backface-hidden rotate-y-180 rounded-xl ${colorClass} p-4 flex flex-col shadow-xl border-2 ${borderColorClass} overflow-hidden`}
         >
-          <div className="flex-1 flex flex-col text-white text-left space-y-2">
+          <div className="flex-1 flex flex-col text-white text-left space-y-1.5">
             <div>
               <h4 className="font-display text-xs font-bold text-white/90 mb-0.5">
                 Who you are:
@@ -69,12 +69,19 @@ const Flashcard = ({
               <h4 className="font-display text-xs font-bold text-white/90 mb-0.5">
                 Your job:
               </h4>
-              <p className="text-xs leading-snug text-white/95">{yourJob}</p>
+              <ul className="space-y-0.5">
+                {yourJob.map((job, index) => (
+                  <li key={index} className="text-xs text-white/95 flex items-start gap-1">
+                    <span className="text-primary shrink-0">•</span>
+                    <span className="leading-tight">{job}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
             <div>
               <h4 className="font-display text-xs font-bold text-white/90 mb-0.5">
-                Key phrases to use:
+                Say things like:
               </h4>
               <ul className="space-y-0.5">
                 {keyPhrases.map((phrase, index) => (
@@ -96,7 +103,7 @@ const Flashcard = ({
             </div>
           </div>
 
-          <div className="flex items-center justify-center gap-1.5 text-white/70 text-xs pt-2">
+          <div className="flex items-center justify-center gap-1.5 text-white/70 text-xs pt-1">
             <RotateCw size={12} />
             <span>Click to flip</span>
           </div>

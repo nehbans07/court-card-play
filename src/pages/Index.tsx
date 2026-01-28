@@ -1,8 +1,10 @@
 import { Printer, Scale } from "lucide-react";
 import Flashcard from "@/components/Flashcard";
 import Instructions from "@/components/Instructions";
+import IntroPage from "@/components/IntroPage";
 import { flashcardsData } from "@/data/flashcardsData";
 import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Index = () => {
   const handlePrint = () => {
@@ -25,40 +27,58 @@ const Index = () => {
         </p>
       </header>
 
-      {/* Print Button */}
-      <div className="flex justify-center mb-6 no-print">
-        <Button
-          onClick={handlePrint}
-          className="bg-primary hover:bg-primary/90 text-primary-foreground font-display font-semibold px-6 py-2 rounded-lg shadow-lg flex items-center gap-2 transition-all hover:scale-105"
-        >
-          <Printer size={18} />
-          Print as PDF
-        </Button>
-      </div>
-
-      {/* Instructions */}
-      <div className="max-w-6xl mx-auto no-print">
-        <Instructions />
-      </div>
-
-      {/* Flashcards Grid */}
+      {/* Tabs */}
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-          {flashcardsData.map((card, index) => (
-            <Flashcard
-              key={index}
-              role={card.role}
-              emoji={card.emoji}
-              subtitle={card.subtitle}
-              whoYouAre={card.whoYouAre}
-              yourJob={card.yourJob}
-              keyPhrases={card.keyPhrases}
-              remember={card.remember}
-              colorClass={card.colorClass}
-              borderColorClass={card.borderColorClass}
-            />
-          ))}
-        </div>
+        <Tabs defaultValue="intro" className="w-full">
+          <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-6 no-print">
+            <TabsTrigger value="intro" className="font-display font-semibold">
+              📖 How It Works
+            </TabsTrigger>
+            <TabsTrigger value="flashcards" className="font-display font-semibold">
+              🎴 Role Cards
+            </TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="intro" className="no-print">
+            <IntroPage />
+          </TabsContent>
+
+          <TabsContent value="flashcards">
+            {/* Print Button */}
+            <div className="flex justify-center mb-6 no-print">
+              <Button
+                onClick={handlePrint}
+                className="bg-primary hover:bg-primary/90 text-primary-foreground font-display font-semibold px-6 py-2 rounded-lg shadow-lg flex items-center gap-2 transition-all hover:scale-105"
+              >
+                <Printer size={18} />
+                Print as PDF
+              </Button>
+            </div>
+
+            {/* Instructions */}
+            <div className="no-print">
+              <Instructions />
+            </div>
+
+            {/* Flashcards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+              {flashcardsData.map((card, index) => (
+                <Flashcard
+                  key={index}
+                  role={card.role}
+                  emoji={card.emoji}
+                  subtitle={card.subtitle}
+                  whoYouAre={card.whoYouAre}
+                  yourJob={card.yourJob}
+                  keyPhrases={card.keyPhrases}
+                  remember={card.remember}
+                  colorClass={card.colorClass}
+                  borderColorClass={card.borderColorClass}
+                />
+              ))}
+            </div>
+          </TabsContent>
+        </Tabs>
       </div>
 
       {/* Footer */}
