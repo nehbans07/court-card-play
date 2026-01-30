@@ -8,12 +8,19 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+const getBasename = () => {
+  if (window.location.hostname.includes("github.io")) {
+    return "/court-card-play";
+  }
+  return "/";
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter basename="/court-card-play">
+      <BrowserRouter basename={getBasename()}>
         <Routes>
           <Route path="/" element={<Index />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

@@ -5,8 +5,9 @@
     <title>Redirecting...</title>
     <script>
       sessionStorage.redirect = location.href;
+      var basePath = location.hostname.includes('github.io') ? '/court-card-play/' : '/';
+      location.replace(basePath);
     </script>
-    <meta http-equiv="refresh" content="0;URL='/court-card-play/'">
   </head>
   <body></body>
 </html>
