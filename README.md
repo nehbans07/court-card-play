@@ -62,11 +62,43 @@ This project is built with:
 
 ## How can I deploy this project?
 
+### GitHub Pages (Recommended)
+
+This project is configured for automatic deployment to GitHub Pages via GitHub Actions.
+
+**Setup:**
+
+1. Push your changes to the `main` branch
+2. Go to your GitHub repository Settings > Pages
+3. Under "Build and deployment", set **Source** to **GitHub Actions**
+4. The workflow will automatically build and deploy on every push to `main`
+
+**Live URL:** `https://<your-github-username>.github.io/court-card-play/`
+
+**Manual Deployment:**
+
+You can also trigger a deployment manually:
+1. Go to Actions tab in your repository
+2. Select "Deploy to GitHub Pages" workflow
+3. Click "Run workflow"
+
+### Lovable (Legacy)
+
+Alternatively, you can deploy via Lovable:
+
 Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
 
-## Can I connect a custom domain to my Lovable project?
+## Can I connect a custom domain?
 
-Yes, you can!
+**For GitHub Pages:**
+
+1. Go to Settings > Pages in your repository
+2. Under "Custom domain", enter your domain
+3. Configure your DNS with a CNAME record pointing to `<username>.github.io`
+
+Read more: [GitHub Pages custom domains](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site)
+
+**For Lovable (Legacy):**
 
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
